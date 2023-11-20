@@ -12,7 +12,6 @@ const product_schema = new Schema({
     product_description: {
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
 
