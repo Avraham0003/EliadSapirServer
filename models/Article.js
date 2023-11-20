@@ -12,7 +12,6 @@ const article_schema = new Schema({
     article_description: { 
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
 
