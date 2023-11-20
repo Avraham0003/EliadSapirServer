@@ -71,6 +71,20 @@ module.exports = {
                 error: error.message
             })
         }
+    },
+    get_by_id:async (req,res)=>{
+        try {
+            const id = req.params.id
+            const article = await Article.findById(id);
+            return res.json({
+                article
+            });
+        } catch (error) {
+            return res.status(500).json({
+                message: "error in getting just one article",
+                error: error.message
+            });
+        }
     }
 
 

@@ -79,6 +79,20 @@ update_product: async(req,res) =>{
             error: error.message
         })
     }
+},
+get_by_id:async (req,res)=>{
+    try {
+        const id = req.params.id
+        const product = await Product.findById(id);
+        return res.json({
+            product
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "error in getting just one product",
+            error: error.message
+        });
+    }
 }
 
 }
