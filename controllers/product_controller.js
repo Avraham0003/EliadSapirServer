@@ -1,6 +1,6 @@
 const Product = require('../models/Product');
 module.exports = {
-    get_all_products: async (req, res) => {
+get_all_products: async (req, res) => {
         try {
             const products = await Product.find();
             return res.json({
@@ -13,8 +13,8 @@ module.exports = {
             });
         }
 
-    },
-    create_product: async (req, res) => {
+},
+create_product: async (req, res) => {
         try {
 
             const {
@@ -48,7 +48,37 @@ module.exports = {
                 error: error.message
             });
         }
+},
+delete_product: async (req,res) => {
+        try {
+            const product_id  = req.params.id;
+            await Product.findByIdAndDelete(id);
+            return res.status(200).json({
+                success: true,
+                message: 'Product deleted successfully'
+            })
+        } catch (error) {
+            return res.status(500).json({
+                message: "error in delete product",
+                error: error.message
+        })
     }
+},
+update_product: async(req,res) =>{
+    try {
+        await Product.findByIdAndUpdate(req.params.product_id,req.body);
 
+        return res.status(200).json({
+            success: true,
+            message: 'product updated successfully',
+
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: "error to update product",
+            error: error.message
+        })
+    }
+}
 
 }

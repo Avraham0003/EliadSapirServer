@@ -9,7 +9,7 @@ const article_schema = new Schema({
         trim: true
     },
 
-    article_descreption: { 
+    article_description: { 
         type: String,
         required: true,
         unique: true,
