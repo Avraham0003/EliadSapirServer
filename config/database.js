@@ -1,19 +1,26 @@
 const mongoose = require('mongoose');
 
-const url = process.env.DATABASE || 'mongodb://localhost:27017';
 
-mongoose.set('strictQuery', true);
 
-const connection = async () => {
+const connection = async() =>{
+
+    let url = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/";
+
     try {
         
-        await mongoose.connect(url);
+        await mongoose.connect(url,{
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+            /* useCreateIndex: true, */
+            autoIndex: true,
+        });
 
-        console.log("database connected");
+        console.log("mongoose connected to DB");
 
     } catch (error) {
         console.log(error);
     }
-}
-module.exports = connection;
+};
 
+
+module.exports = connection;
