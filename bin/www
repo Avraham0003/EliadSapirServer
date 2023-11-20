@@ -80,7 +80,7 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
+const connectToDatabase = require('../config/database');
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
@@ -88,4 +88,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
   console.log('Listening on port:' + port);
+  connectToDatabase();
 }
