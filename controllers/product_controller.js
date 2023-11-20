@@ -52,7 +52,7 @@ create_product: async (req, res) => {
 delete_product: async (req,res) => {
         try {
             const product_id  = req.params.id;
-            await Product.findByIdAndDelete(id);
+            await Product.findByIdAndDelete(product_id);
             return res.status(200).json({
                 success: true,
                 message: 'Product deleted successfully'
@@ -66,7 +66,7 @@ delete_product: async (req,res) => {
 },
 update_product: async(req,res) =>{
     try {
-        await Product.findByIdAndUpdate(req.params.product_id,req.body);
+        await Product.findByIdAndUpdate(req.params.id,req.body);
 
         return res.status(200).json({
             success: true,

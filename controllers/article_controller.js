@@ -44,7 +44,7 @@ module.exports = {
     delete_articles: async(req,res) =>{
         try {
             const article_id  = req.params.id;
-            await Article.findByIdAndDelete(_id);
+            await Article.findByIdAndDelete(article_id);
             return res.status(200).json({
                 success: true,
                 message: 'Article deleted successfully'
