@@ -9,7 +9,7 @@ const product_schema = new Schema({
         trim: true
     },
 
-    product_descreption: {
+    product_description: {
         type: String,
         required: true,
         unique: true,
