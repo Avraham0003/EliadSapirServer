@@ -5,7 +5,8 @@ module.exports = {
 
      login: async(req,res)=>{
         try {            
-           const {password} = req.body;
+           let {password} = req.body;3
+           password = password.password;
     
            if(password===process.env.PASS){
                  const payload ={
@@ -19,12 +20,15 @@ module.exports = {
                     }); 
             }
             else{
+                console.log(password);
                 return res.status(401).json({
+                    success: false,
                     message: "unauthorized!"
                 }); 
             }
         } catch (error) {
             return res.status(500).json({
+                success: false,
                 error: error.message
             });
             
