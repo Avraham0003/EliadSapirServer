@@ -20,21 +20,21 @@ create_product: async (req, res) => {
             const {
                 product_name,
                 product_description,
-                product_price
+                product_image
             } = req.body;
 
 
-            if (product_name == null || product_description == null || product_price == null) {
+            if (product_name == null || product_description == null || product_image == null) {
                 throw new Error('Please complete all the fields!');
             }
-            if (!product_name || !product_description || !product_price) {
+            if (!product_name || !product_description || !product_image) {
                 throw new Error('Please complete all the fields!');
             }
 
             const new_product = new Product({
                 product_name,
                 product_description,
-                product_price
+                product_image
             });
 
             await new_product.save();

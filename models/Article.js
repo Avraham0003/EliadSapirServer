@@ -15,9 +15,8 @@ const article_schema = new Schema({
         trim: true
     },
 
-    article_owner: { 
+    article_photo: { 
         type: String,
-        required: true,
         trim: true
     }
 

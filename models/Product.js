@@ -13,7 +13,7 @@ const product_schema = new Schema({
         required: true
     },
 
-    product_price: {
+    product_image: {
         type: String,
         required: true,
     },

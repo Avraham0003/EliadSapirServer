@@ -19,13 +19,13 @@ module.exports = {
             const {
                 article_name,
                 article_description,
-                article_owner
+                article_photo
             } = req.body
 
             const new_article = new Article({
                 article_name,
                 article_description,
-                article_owner
+                article_photo
             });
             await new_article.save();
             
