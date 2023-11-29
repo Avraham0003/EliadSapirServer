@@ -1,20 +1,20 @@
-const Zorkesher = require('../models/ZorKesher');
+const Contact = require('../models/Contact');
 module.exports = {
-    get_all_zorkesher: async (req, res) => { 
+    get_all_contact: async (req, res) => { 
         try {
-            const zorkesher = await Zorkesher.find();
+            const contact = await Contact.find();
             return res.json({
-                zorkesher
+                contact
             });
         } catch (error) {
             return res.status(500).json({
-                message: "error in getting all zorkesher",
+                message: "error in getting all contact",
                 error: error.message
             });
         }
 
     },
-    create_zorkesher: async(req,res) => {
+    create_contact: async(req,res) => {
         try{
             const {
                 user_name,
@@ -22,36 +22,36 @@ module.exports = {
                 user_reason
             } = req.body
 
-            const new_zorkesher = new Zorkesher({
+            const new_contact = new Contact({
                 user_name,
                 user_phone,
                 user_reason
             });
-            await new_zorkesher.save();
+            await new_contact.save();
             
-            return res.json({
-                message: "zorkesher created!"
+            return res.status(200).json({
+                message: "Contact created!"
             })
 
         }catch(error){
             return res.status(500).json({
-                message: "error to create zorkesher",
+                message: "error to create contact",
                 error: error.message
             });
         }
     },
 
-    delete_zorkesher: async(req,res) =>{
+    delete_contact: async(req,res) =>{
         try {
-            const zorkesher_id  = req.params.id;
-            await Zorkesher.findByIdAndDelete(zorkesher_id);
+            const contact_id  = req.params.id;
+            await Contact.findByIdAndDelete(contact_id);
             return res.status(200).json({
                 success: true,
-                message: 'zorkesher deleted successfully'
+                message: 'contact deleted successfully'
             })
         } catch (error) {
             return res.status(500).json({
-                message: "error in delete zorkesher",
+                message: "error in delete contact",
                 error: error.message
         })
     }
@@ -59,13 +59,13 @@ module.exports = {
     get_by_id:async (req,res)=>{
         try {
             const id = req.params.id
-            const zorkesher = await Zorkesher.findById(id);
+            const contact = await Contact.findById(id);
             return res.json({
-                zorkesher
+                contact
             });
         } catch (error) {
             return res.status(500).json({
-                message: "error in getting your zorkesher",
+                message: "error in getting your contact",
                 error: error.message
             });
         }

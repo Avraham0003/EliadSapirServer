@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const zorkesher_schema = new Schema({
+const contact_schema = new Schema({
 
     user_name: { 
         type: String,
         required: true,
-        unique: true,
         trim: true
     },
 
@@ -18,9 +17,14 @@ const zorkesher_schema = new Schema({
     user_reason: { 
         type: String,
         trim: true
+    },
+
+    checked: {
+        type: Boolean,
+        default: false
     }
 
 });
 
 
-module.exports = mongoose.model('zorkesher', zorkesher_schema);
+module.exports = mongoose.model('contact', contact_schema);
