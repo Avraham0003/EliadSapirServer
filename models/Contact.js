@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const contact_schema = new Schema({
 
-    user_name: { 
+    name: { 
         type: String,
         required: true,
         trim: true
     },
 
-    user_phone: { 
+    phone: { 
         type: String,
         required: true,
         trim: true
     },
 
-    user_reason: { 
+    category: { 
         type: String,
         trim: true
     },

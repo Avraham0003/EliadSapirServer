@@ -17,15 +17,15 @@ module.exports = {
     create_contact: async(req,res) => {
         try{
             const {
-                user_name,
-                user_phone,
-                user_reason
+                name,
+                phone,
+                category
             } = req.body
 
             const new_contact = new Contact({
-                user_name,
-                user_phone,
-                user_reason
+                name,
+                phone,
+                category
             });
             await new_contact.save();
             
@@ -69,6 +69,32 @@ module.exports = {
                 error: error.message
             });
         }
+    },
+    toggle_checked: async (req,res)=>{
+        try {
+            const { contact_id, change_to } = req.body;
+        
+            // Using await to make sure findByIdAndUpdate completes before moving on
+            const updatedContact = await Contact.findByIdAndUpdate(contact_id, { checked: change_to });
+        
+            // Checking if the contact was not found
+            if (!updatedContact) {
+                return res.status(404).json({
+                    message: "Contact not found",
+                });
+            }
+        
+            res.status(200).json({
+                message: "checked has been changed to " + change_to,
+            });
+        
+        } catch (error) {
+            return res.status(500).json({
+                message: "Error in toggle checked",
+                error: error.message,
+            });
+        }
+        
     }
 
 
