@@ -3,9 +3,9 @@ const Project = require('../models/Project');
 module.exports = {
     get_all_project: async (req, res) => { 
         try {
-            const project = await Project.find();
+            const projects = await Project.find();
             return res.json({
-                project
+                projects
             });
         } catch (error) {
             return res.status(500).json({

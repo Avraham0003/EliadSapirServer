@@ -5,7 +5,7 @@ module.exports = {
 
      login: async(req,res)=>{
         try {            
-           let {password} = req.body;3
+           let {password} = req.body;
            password = password.password;
     
            if(password===process.env.PASS){
