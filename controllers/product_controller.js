@@ -16,7 +16,6 @@ get_all_products: async (req, res) => {
 },
 create_product: async (req, res) => {
         try {
-
             const {
                 product_name,
                 product_description,
