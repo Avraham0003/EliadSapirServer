@@ -23,6 +23,10 @@ const project_schema = new Schema({
         type:String,
         required: true,
         unique: true
+    },
+    favorite:{
+        type: Boolean,
+        required: true
     }
 
 });

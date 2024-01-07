@@ -28,7 +28,8 @@ module.exports = {
                 project_name,
                 project_description,
                 project_photo,
-                youtube_url
+                youtube_url,
+                favorite: false
             });
             await new_project.save();
             
@@ -88,8 +89,39 @@ module.exports = {
                 error: error.message
             });
         }
-    }
+    },
 
+    make_favorite: async (req,res)=>{
+        try {
+            const id = req.params.id;
+            await Project.updateMany({},{ favorite: false });
+            await Project.findOneAndUpdate({_id: id}, {favorite : true});
+
+            res.status(200).json({
+            "success": true,
+            });
+            
+        } catch (error) {
+            res.status(500).json({
+            "success": false,
+            });
+            
+        }
+    },
+
+        get_favorite: async (req,res)=>{
+        try {
+            const project = await Project.findOne({favorite: true});
+
+            res.status(200).json({
+                project: project
+            })
+        } catch (error) {
+            res.status(500).json({
+                message: "error!"
+            })
+        }
+        }
 
   
 }
